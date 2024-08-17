@@ -1,3 +1,4 @@
+import 'package:bookly_app/const.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/style.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/books_hori_list_view.dart';
@@ -9,22 +10,22 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomAppBar(),
-        BooksListView(),
-        SizedBox(
+      const  CustomAppBar(),
+      const  BooksListView(),
+      const  SizedBox(
           height: 30,
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding:const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             'Best Seller',
-            style: Styles.TitleMedium,
+            style: Styles.textStyle30.copyWith(fontFamily: kGtSectraFine),
           ),
         ),
-        Padding(
+      const  Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: BestSellerViewItem(),
         )
