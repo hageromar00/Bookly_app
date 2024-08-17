@@ -11,8 +11,8 @@ class CustomHoriViewItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: Colors.amber,
-            image:const DecorationImage(
+            color: const Color.fromARGB(255, 231, 199, 199),
+            image: const DecorationImage(
                 image: AssetImage(AssetsDate.testImage), fit: BoxFit.fill)),
       ),
     );
