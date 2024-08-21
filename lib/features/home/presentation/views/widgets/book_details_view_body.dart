@@ -5,6 +5,17 @@ class BookDetailViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Column(children: [],);
+  }
+}
+class CustomBookDetailsAppBar extends StatelessWidget {
+  const CustomBookDetailsAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(children: [
+     
+
+    ],);
   }
 }
