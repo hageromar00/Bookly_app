@@ -11,13 +11,13 @@ class BooksListView extends StatelessWidget {
       child: SizedBox(
         height: MediaQuery.of(context).size.height * .3,
         child: ListView.builder(
-            physics:const BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
-            itemCount: 4,
+            itemCount: 6,
             itemBuilder: (context, index) {
               return const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8),
-                child:CustomHoriViewItem(),
+                child: CustomHoriViewItem(),
               );
             }),
       ),
