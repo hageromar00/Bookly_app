@@ -39,22 +39,11 @@ class BookDetailViewBody extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 3,
+            height: 16,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 60),
-            child: Row(
-              children: [
-                Text(
-                  r'19,99$',
-                  style:
-                      Styles.textStyle20.copyWith(fontWeight: FontWeight.bold),
-                ),
-                const Spacer(),
-                const BookRating(),
-              ],
-            ),
-          )
+          const BookRating(
+            main: MainAxisAlignment.center,
+          ),
         ],
       ),
     );
