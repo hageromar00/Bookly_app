@@ -4,6 +4,7 @@ import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_
 import 'package:bookly_app/features/home/presentation/views/widgets/book_action.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_appbar_bookdetails.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/simlilar_book_hori_list_view.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailViewBody extends StatelessWidget {
@@ -18,18 +19,18 @@ class BookDetailViewBody extends StatelessWidget {
         children: [
           const CustomBookDetailsAppBar(),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: widthh * .2),
+            padding: EdgeInsets.symmetric(horizontal: widthh * .22),
             child: const CustomBookImage(),
           ),
           const SizedBox(
-            height: 43,
+            height: 25,
           ),
           Text(
             'Harry Potter and ',
             style: Styles.textStyle20.copyWith(fontFamily: kGtSectraFine),
           ),
           const SizedBox(
-            height: 6,
+            height: 3,
           ),
           Opacity(
             opacity: .8,
@@ -46,11 +47,37 @@ class BookDetailViewBody extends StatelessWidget {
             main: MainAxisAlignment.center,
           ),
           const SizedBox(
-            height: 37,
+            height: 30,
           ),
           const BookAction(),
+          const SizedBox(
+            height: 30,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'You can also like',
+              style: Styles.textStyle14.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+         const  Expanded(
+            child: SizedBox(
+              height: 16,
+            ),
+          ),
+          // SizedBox(
+          //   height: 16,
+          // ),
+          const SimilarBookListView(),
+         const  SizedBox(
+            height: 20,
+          )
         ],
       ),
     );
   }
 }
+
+
