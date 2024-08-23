@@ -19,7 +19,7 @@ class BookDetailViewBody extends StatelessWidget {
         SliverFillRemaining(
             hasScrollBody: false,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding:  EdgeInsets.symmetric(horizontal: 30),
               child: Column(
                 children: [
                   BookDetailsSection(),
