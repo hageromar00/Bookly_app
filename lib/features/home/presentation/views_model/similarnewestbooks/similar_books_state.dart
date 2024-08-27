@@ -8,8 +8,15 @@ abstract class SimilarBooksState extends Equatable {
 }
 
 class SimilarBooksInitial extends SimilarBooksState {}
+
 class SimilarBooksLoad extends SimilarBooksState {}
-class SimilarBooksSuccess extends SimilarBooksState {}
-class SimilarBooksFail extends SimilarBooksState {}
 
+class SimilarBooksSuccess extends SimilarBooksState {
+  final List<BookModel> book;
+ const  SimilarBooksSuccess(this.book);
+}
 
+class SimilarBooksFail extends SimilarBooksState {
+  final String errormessage;
+  const SimilarBooksFail(this.errormessage);
+}
