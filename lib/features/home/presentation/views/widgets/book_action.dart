@@ -1,16 +1,19 @@
 import 'package:bookly_app/core/widget/custom_button.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookAction extends StatelessWidget {
-  const BookAction({super.key});
+  const BookAction({super.key,required this.model});
+  final BookModel model;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+    return  Padding(
+      padding:const  EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         children: [
-          Expanded(
+        const  Expanded(
             child: CustomButton(
               BackColor: Colors.white,
               TextColor: Colors.black,
@@ -22,6 +25,12 @@ class BookAction extends StatelessWidget {
           ),
           Expanded(
             child: CustomButton(
+              onpresses: ()async{ 
+                final Uri _url = Uri.parse(model.volumeInfo!.previewLink!);
+                 if (!await launchUrl(_url)) {
+    throw Exception('Could not launch $_url');
+  }
+              },
               FontSize: 16,
               BackColor: Color(0xffEF8262),
               TextColor: Colors.white,

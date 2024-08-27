@@ -21,7 +21,7 @@ class SimilarBookListView extends StatelessWidget {
           child: ListView.builder(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              itemCount: 6,
+              itemCount: state.book.length,
               itemBuilder: (context, index) {
                 return  Padding(
                   padding:const EdgeInsets.symmetric(horizontal: 5),
