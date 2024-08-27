@@ -8,5 +8,8 @@ abstract class SimilarBooksState extends Equatable {
 }
 
 class SimilarBooksInitial extends SimilarBooksState {}
+class SimilarBooksLoad extends SimilarBooksState {}
+class SimilarBooksSuccess extends SimilarBooksState {}
+class SimilarBooksFail extends SimilarBooksState {}
 
 
