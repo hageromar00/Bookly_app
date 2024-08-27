@@ -2,13 +2,15 @@ import 'package:bookly_app/const.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/style.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerViewItem extends StatelessWidget {
-  const BestSellerViewItem({super.key});
-
+  const BestSellerViewItem({super.key, required this.book});
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,17 +21,19 @@ class BestSellerViewItem extends StatelessWidget {
         height: 120,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 2.6 / 4, //width/height
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: const Color.fromARGB(255, 231, 199, 199),
-                    image: const DecorationImage(
-                        image: AssetImage(AssetsDate.testImage),
-                        fit: BoxFit.fill)),
-              ),
-            ),
+            CustomBookImage(
+                imgurl: book.volumeInfo!.imageLinks!.thumbnail ?? ''),
+            // AspectRatio(
+            //   aspectRatio: 2.6 / 4, //width/height
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(16),
+            //         color: const Color.fromARGB(255, 231, 199, 199),
+            //         image: const DecorationImage(
+            //             image: AssetImage(AssetsDate.testImage),
+            //             fit: BoxFit.fill)),
+            //   ),
+            // ),
             const SizedBox(
               width: 30,
             ),
@@ -40,7 +44,7 @@ class BestSellerViewItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
                     child: Text(
-                      'Harry Potter and the Goblet of Fire ',
+                      book.volumeInfo!.title!,
                       style: Styles.textStyle20
                           .copyWith(fontFamily: kGtSectraFine),
                       maxLines: 2,
@@ -51,7 +55,7 @@ class BestSellerViewItem extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    'jw Powing',
+                    book.volumeInfo!.authors![0],
                     style: Styles.textStyle14.copyWith(color: Colors.grey),
                   ),
                   const SizedBox(
@@ -65,7 +69,9 @@ class BestSellerViewItem extends StatelessWidget {
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                       const Spacer(),
-                      const BookRating(),
+                      BookRating(rating:book.volumeInfo?.averageRating?.round() ,
+                      count: book.volumeInfo!.pageCount!,
+                      ),
                     ],
                   )
                 ],
@@ -80,32 +86,34 @@ class BestSellerViewItem extends StatelessWidget {
 }
 
 class BookRating extends StatelessWidget {
-  const BookRating({super.key, this.main = MainAxisAlignment.start});
+  const BookRating({super.key, this.main = MainAxisAlignment.start,required this.rating, required this.count});
   final MainAxisAlignment main;
+  final dynamic rating;
+  final int count;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: main,
-      children: const [
-        Icon(
+      children:  [
+       const Icon(
           size: 14,
           FontAwesomeIcons.solidStar,
           color: Colors.yellow,
         ),
-        SizedBox(
+      const  SizedBox(
           width: 6.3,
         ),
         Text(
-          '4.8',
+          rating.toString(),
           style: Styles.textStyle16,
         ),
-         SizedBox(
+       const SizedBox(
           width: 6.3,
         ),
         Opacity(
           opacity: .5,
           child: Text(
-            '(245)',
+            '($count)',
             // style: Styles.textStyle14.copyWith(color: const Color(0xff707070)),
             style: Styles.textStyle14,
           ),
